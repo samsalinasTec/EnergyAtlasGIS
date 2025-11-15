@@ -1,7 +1,7 @@
 # 🗺️ Atlas de Energía - Resumen Ejecutivo y Arquitectura
 
 ## 📋 Resumen Ejecutivo
-
+## Hola Sami
 **Atlas de Energía** es una plataforma web para visualización de datos energéticos globales, actualmente en su primera fase de desarrollo (MVP/Rebanada 1).
 
 ### 🎯 Objetivo del Proyecto
