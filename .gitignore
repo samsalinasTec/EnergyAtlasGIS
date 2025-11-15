@@ -1,0 +1,130 @@
+# ======================================
+# Python
+# ======================================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pdb
+*.egg-info/
+*.egg
+*.manifest
+*.spec
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Poetry / UV
+.uv/
+.venv/
+poetry.lock
+
+# PyInstaller
+build/
+dist/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+*.ipynb~
+
+# Logs
+logs/
+*.log
+
+# Cache
+.cache/
+*.cache
+.cache/*
+
+# ======================================
+# FastAPI / Backend
+# ======================================
+# Uvicorn / Gunicorn
+*.pid
+
+# Local environment variables
+.env
+.env.*
+!.env.example
+
+# SQL / Databases
+*.db
+*.sqlite3
+*.sqlite
+*.sql-journal
+
+# Credentials
+service_account.json
+credentials.json
+*.pem
+*.key
+
+# ======================================
+# Node / React / Vite
+# ======================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.pnpm-store/
+
+# Output of Vite / React builds
+dist/
+build/
+
+# Local config files
+*.local
+
+# ======================================
+# GIS data (heavy files)
+# ======================================
+*.shp
+*.shx
+*.dbf
+*.prj
+*.geojson
+*.gpx
+*.kml
+*.kmz
+*.tif
+*.tiff
+*.vrt
+*.aux
+*.ovr
+*.zip
+*.7z
+
+# QGIS / ArcGIS
+*.qgs~
+*.qgz~
+.qgis2/
+.qgis3/
+
+# ======================================
+# Docker
+# ======================================
+docker-compose.override.yml
+*.tar
+
+# ======================================
+# VSCode
+# ======================================
+.vscode/
+.history/
+
+# ======================================
+# OS files
+# ======================================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ======================================
+# Misc
+# ======================================
+*.swp
+*.swo
