@@ -3,11 +3,20 @@ name = "gisaiproject"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.12,<3.13"
 dependencies = [
     "fastapi>=0.121.2",
-    "gdal>=3.11.4",
+    
+    ### GDAL dependency management based on OS
+    # For Windows: Pin to the version available in the 'gwi' index
+    "gdal==3.11.4 ; sys_platform == 'win32'",
+    # For macOS: Force it up to 3.12+ to match Homebrew
+    "gdal>=3.12.0 ; sys_platform == 'darwin'", 
+    # For Linux: Allow it to be flexible
+    "gdal>=3.11.4 ; sys_platform == 'linux'",
+
     "mypy>=1.18.2",
+    "numpy>=1.26.0", # Added explicit numpy, critical for GDAL builds
     "pandas>=2.3.3",
     "pydantic>=2.12.4",
     "pygis>=0.10.1",
@@ -23,10 +32,12 @@ dependencies = [
 ]
 
 [tool.uv.sources]
-gdal = { index = "gwi" }
-pyproj = { index = "gwi" }
-rasterio = { index = "gwi" }
+# Only gdal uses the special Windows wheels index, and only on Windows.
+gdal = [
+  { index = "gwi", marker = "sys_platform == 'win32'" }
+]
 
 [[tool.uv.index]]
 name = "gwi"
 url = "https://gisidx.github.io/gwi"
+explicit = true
