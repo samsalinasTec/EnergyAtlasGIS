@@ -265,4 +265,138 @@ Este proyecto está bajo la Licencia MIT - ver archivo [LICENSE](LICENSE) para d
 
 ---
 
+⚠️ 0. Antes de actualizar a esta versión (IMPORTANTE)
+
+Si ya habías trabajado con este proyecto antes, necesitas limpiar tu entorno local, porque:
+
+Tu .uv/ puede tener versiones antiguas de GIS
+
+Tu uv.lock podría contener paquetes que ya no existen
+
+Las librerías GIS pueden haberse instalado incorrectamente en tu sistema
+
+Cómo limpiar tu entorno uv local
+
+En la raíz del proyecto:
+
+rm -rf .uv uv.lock
+
+
+Luego:
+
+uv sync
+
+
+Esto deja tu entorno totalmente limpio y sincronizado con el pyproject.toml actual.
+
+✔ 1. Concepto clave (muy importante)
+
+Todo lo que instales con:
+
+uv pip install <paquete>
+
+
+se instala solo en tu máquina, dentro de .uv/.
+
+Eso significa:
+
+No modifica pyproject.toml
+
+No modifica uv.lock
+
+No se comparte al repositorio
+
+No afecta a otros integrantes del equipo
+
+Cada persona tiene que instalar su propio entorno GIS solo una vez.
+
+✔ 2. Instalación base (igual para todos)
+
+Después de limpiar o clonar:
+
+uv sync
+
+
+Esto prepara el entorno base del proyecto (sin GIS).
+
+🌍 3. Instalación GIS según sistema operativo
+🍏 macOS (Intel / Apple Silicon)
+
+Instalar GDAL nativo en el sistema:
+
+brew install gdal
+
+
+Instalar los bindings GIS en tu entorno uv:
+
+uv pip install gdal geopandas pyproj rasterio shapely
+
+
+Test:
+
+uv run python api/tests/gdilcompar.py
+
+🪟 Windows
+
+⚠️ No modifiques el pyproject.toml.
+⚠️ Todo lo que instales con uv pip es únicamente para tu entorno local.
+
+Instalar GDAL precompilado (evita compilar C++):
+
+uv pip install --index-url https://gisidx.github.io/gwi/simple gdal
+
+
+Instalar librerías GIS:
+
+uv pip install geopandas pyproj rasterio shapely
+
+
+Test:
+
+uv run python api/tests/gdilcompar.py
+
+🐧 Linux (Ubuntu/Debian)
+
+Instalar GDAL del sistema:
+
+sudo apt-get update
+sudo apt-get install -y gdal-bin libgdal-dev
+
+
+Instalar GIS en tu entorno uv:
+
+uv pip install geopandas pyproj rasterio shapely
+
+
+Test:
+
+uv run python api/tests/gdilcompar.py
+
+✔ 4. Test universal del entorno GIS
+
+El archivo:
+
+api/tests/gdilcompar.py
+
+from osgeo import gdal
+import pyproj
+import geopandas as gpd
+import rasterio
+import shapely
+
+print("GDAL:", gdal.VersionInfo())
+print("PyProj:", pyproj.__version__)
+print("GeoPandas:", gpd.__version__)
+print("Rasterio:", rasterio.__version__)
+print("Shapely:", shapely.__version__)
+
+
+Ejecutar:
+
+uv run python api/tests/gdilcompar.py
+
+
+Si imprime las versiones: tu entorno GIS está listo.
+
+
 **Desarrollado con ❤️ para un futuro energético sostenible**

@@ -1,32 +1,22 @@
 [project]
-name = "gisaiproject"
+name = "Kernel-BYT"
 version = "0.1.0"
-description = "Add your description here"
+description = "Universal GIS environment for EnergyAtlasGIS"
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.11,<3.12"
+
 dependencies = [
-    "fastapi>=0.121.2",
-    "gdal>=3.11.4",
-    "mypy>=1.18.2",
-    "pandas>=2.3.3",
-    "pydantic>=2.12.4",
-    "pygis>=0.10.1",
-    "pyproj>=3.7.2",
-    "pytest>=9.0.1",
-    "python-dotenv>=1.2.1",
-    "rasterio>=1.4.3",
-    "requests>=2.32.5",
-    "ruff>=0.14.5",
-    "sqlalchemy>=2.0.44",
-    "streamlit>=1.51.0",
     "uvicorn[standard]>=0.38.0",
+    "python-dotenv>=1.2.1",
+    "sqlalchemy>=2.0.44",
+    "requests>=2.32.5",
+    "pandas>=2.2.1",
+    "ruff>=0.14.5",
+    "mypy>=1.18.2",
+    "pytest>=9.0.1",
+    "streamlit>=1.51.0",
 ]
 
-[tool.uv.sources]
-gdal = { index = "gwi" }
-pyproj = { index = "gwi" }
-rasterio = { index = "gwi" }
 
-[[tool.uv.index]]
-name = "gwi"
-url = "https://gisidx.github.io/gwi"
+
+

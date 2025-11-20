@@ -130,3 +130,5 @@ desktop.ini
 *.swp
 *.swo
 *.csv
+.python-version
+api/tests/.python-version
