@@ -97,6 +97,7 @@ build/
 *.ovr
 *.zip
 *.7z
+*.gpkg
 
 # QGIS / ArcGIS
 *.qgs~
