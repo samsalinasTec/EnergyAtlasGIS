@@ -1,7 +1,7 @@
 # OBJETIVO: definir endpoints HTTP (como urls+views de Django en uno).
 from fastapi import APIRouter, HTTPException
 from ..models.country import Country, CountryDetail
-from ..services.countries_service import list_countries, get_country
+from ..services.countries_services import list_countries, get_country
 
 router = APIRouter(prefix="/paises", tags=["paises"])
 
