@@ -211,6 +211,37 @@ pytest --cov=api/app --cov-report=html
 open htmlcov/index.html
 ```
 
+## ☀️ MVP Solar (nuevo)
+
+El MVP ahora incluye un análisis solar básico usando **NASA POWER** (datos reales)
+con fallback a **datos dummy** si la API externa no responde.
+
+### Endpoint principal
+
+```
+POST /api/solar/analyze
+```
+
+Ejemplo rápido:
+
+```bash
+curl -X POST http://localhost:8000/api/solar/analyze \
+  -H "Content-Type: application/json" \
+  -d '{
+    "latitude": 19.4326,
+    "longitude": -99.1332,
+    "area_m2": 120,
+    "panel_efficiency": 0.2,
+    "performance_ratio": 0.8,
+    "data_source": "nasa"
+  }'
+```
+
+### UI
+
+En Streamlit encontrarás un panel lateral para inputs y un mapa 2D/3D
+con extrusión de edificios dummy y KPIs (kWh/año, kW, capacity factor).
+
 ## 📈 Estado del Proyecto
 
 ### ✅ Fase 1: MVP Básico (COMPLETADO)

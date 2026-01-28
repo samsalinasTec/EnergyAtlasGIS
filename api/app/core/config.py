@@ -1,12 +1,19 @@
 # OBJETIVO: leer variables de entorno y paths útiles para toda la API.
-from pydantic import BaseSettings
+import os
 from pathlib import Path
+from dotenv import load_dotenv
 
-class Settings(BaseSettings):
-    API_BASE_PATH: str = "/api"       # prefijo de rutas
-    DATA_DIR: Path = Path(__file__).resolve().parent.parent / "data"  # ./app/data
+ENV_PATH = Path(__file__).resolve().parents[2] / ".env"
+load_dotenv(ENV_PATH)
 
-    class Config:
-        env_file = Path(__file__).resolve().parents[2] / ".env"  # lee ../.env
+
+class Settings:
+    API_BASE_PATH: str
+    DATA_DIR: Path
+
+    def __init__(self) -> None:
+        self.API_BASE_PATH = os.getenv("API_BASE_PATH", "/api")
+        self.DATA_DIR = Path(__file__).resolve().parent.parent / "data"  # ./app/data
+
 
 settings = Settings()
